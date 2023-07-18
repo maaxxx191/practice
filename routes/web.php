@@ -19,3 +19,11 @@ Route::get('/', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/student/register', function() {
+  return view('student.register');
+});
+
+Route::get('/student', function() {
+  return view('student.index');
+});

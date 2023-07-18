@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
@@ -16,7 +16,10 @@
 
                     You are logged in!
                 </div>
-            </div>
+            </div> -->
+            <a href="{{ url('/home') }}">学年更新</a>
+            <a href="{{ url('/student/register') }}">学生登録</a>
+            <a href="{{ url('/student') }}">学生表示</a>
         </div>
     </div>
 </div>
