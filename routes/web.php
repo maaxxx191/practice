@@ -27,3 +27,19 @@ Route::get('/student/register', function() {
 Route::get('/student', function() {
   return view('student.index');
 });
+
+Route::get('/student/detail', function() {
+  return view('student.detail');
+});
+
+Route::get('/student/edit', function() {
+  return view('student.edit');
+});
+
+Route::get('/student/grades', function() {
+  return view('student.grades');
+});
+
+Route::get('/student/edit-grades', function() {
+  return view('student.edit-grades');
+});
