@@ -24,20 +24,19 @@ Route::get('/student/register', function() {
   return view('student.register');
 });
 
-Route::get('/student', function() {
-  return view('student.index');
-});
+Route::get('/student', 'StudentController@index')->name('student.index');
+// Route::get('/student', function() {
+//   return view('student.index');
+// });
 
-Route::get('/student/detail', function() {
-  return view('student.detail');
-});
+Route::get('/student/detail', 'StudentController@show')->name('student.show');
 
 Route::get('/student/edit', 'StudentController@edit')->name('student.edit');
 // Route::get read(参照)
 // Route::post create(登録)
 
-Route::get('/student/grades', function() {
-  return view('student.grades');
+Route::get('/grade/add', function() {
+  return view('student.add-grade');
 });
 
-Route::get('/student/edit-grades', 'GradeController@edit')->name('student.edit-grades');
+Route::get('/grade/edit', 'GradeController@edit')->name('student.edit-grades');
