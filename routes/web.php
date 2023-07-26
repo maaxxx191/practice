@@ -32,14 +32,12 @@ Route::get('/student/detail', function() {
   return view('student.detail');
 });
 
-Route::get('/student/edit', function() {
-  return view('student.edit');
-});
+Route::get('/student/edit', 'StudentController@edit')->name('student.edit');
+// Route::get read(参照)
+// Route::post create(登録)
 
 Route::get('/student/grades', function() {
   return view('student.grades');
 });
 
-Route::get('/student/edit-grades', function() {
-  return view('student.edit-grades');
-});
+Route::get('/student/edit-grades', 'GradeController@edit')->name('student.edit-grades');
