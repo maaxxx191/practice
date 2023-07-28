@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -44,7 +45,6 @@ class StudentController extends Controller
             "health_and_physical_education" => 5,
         ];
         return view('student.detail', compact('student', 'grade'));
-
     }
 
     public function edit(Request $request) {
@@ -56,6 +56,17 @@ class StudentController extends Controller
             "comment" => "昨年より成績が下がりました",
         ];
         return view('student.edit', compact('array'));
+    }
+    
+    public function store(Request $request) {
+        $student = new Student();
+        $student->name = $request->name; 
+        $student->address = $request->address; 
+        $student->img_path = '';
+        // // // $student->img_path = $request->photo;
+        $student->save();
+
+        return redirect('/student/register')->with('flash_message','登録が完了しました');
     }
     
 }

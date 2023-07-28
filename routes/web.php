@@ -24,10 +24,10 @@ Route::get('/student/register', function() {
   return view('student.register');
 });
 
+Route::post('/student/register', 'StudentController@store')->name('student.register'); 
+// Route::〇〇('URL', 'コントローラー名@メソッド名')
+
 Route::get('/student', 'StudentController@index')->name('student.index');
-// Route::get('/student', function() {
-//   return view('student.index');
-// });
 
 Route::get('/student/detail', 'StudentController@show')->name('student.show');
 
