@@ -4,25 +4,27 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>学生表示</h1>
+            <h3>学生表示</h3>
 
-            <form>
+            <form action="{{ url('/student') }}">
                 <div class="form-group row">
                   <label for="StudentName" class="col-md-2 col-form-label">学生名</label>
                   <div class="col-md-5">
-                    <input type="name" class="form-control" id="StudentName">
+                    <input type="name" class="form-control" id="StudentName" name="name" value="{{ $name }}">
                   </div>
                 </div>
                 <div class="form-group row">
                     <label for="grade" class="col-md-2 col-form-label">学年</label>
                     <div class="col-md-2">
-                        <select class="custom-select" id="grade">
+                        <select class="custom-select" id="grade" name="grade">
+                            {{-- 空の選択肢 --}}
+                            <option value="-1"></option> 
                             @for ($i = 1; $i < 4; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
+                                <option value="{{ $i }}" @if($grade == $i) selected @endif>{{ $i }}</option>
                             @endfor
                         </select>
                     </div>
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">
                         検索
                     </button>
                 </div>
@@ -40,8 +42,8 @@
                 <tbody>
                     @foreach ($students as $student)
                         <tr>
-                            <th scope="row">{{ $student["grade"] }}</th>
-                            <td>{{ $student["name"] }}</td>
+                            <th scope="row">{{ $student->grade }}</th>
+                            <td>{{ $student->name }}</td>
                             <td><button type="button" class="btn btn-secondary" onclick="location.href='{{ url('/student/detail') }}'">詳細表示</button></td>
                         </tr>
                     @endforeach

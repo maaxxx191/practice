@@ -8,25 +8,28 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     public function index(Request $request) {
-        $students = [
-            [
-                "grade" => 2,
-                "name" => "北條", 
-            ],
-            [
-                "grade" => 1,
-                "name" => "大山",
-            ],
-            [
-                "grade" => 3,
-                "name" => "岡田",
-            ]
-        ];
-        return view('student.index', compact('students'));
+
+        $name = $request->name; 
+        $grade = $request->grade;
+        if (isset($name) || isset($grade)) {
+            if ($grade == '-1'){
+                $students = Student::where('name', 'like', '%'.$name.'%')->get();   //学生名検索
+            } else {
+                $students = Student::where('name', 'like', '%'.$name.'%')
+                    ->where('grade', $grade)
+                    ->get();    //学生名、学年検索
+            }
+        } else {
+            $students = Student::get();  // 全てのデータが取得できる
+        }
+           
+         
+        return view('student.index', compact('students', 'name', 'grade'));
     }
 
     public function show(Request $request) {
         $student = [
+            "id" => 3,
             "grade" => 2,
             "name" => "岡田", 
             "address" => "兵庫県西宮市甲子園80",

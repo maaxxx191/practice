@@ -73,7 +73,7 @@
             </div>
 
             <div>
-                <button type="button" class="btn btn-secondary" onclick="location.href='{{ url('/grade/add') }}'">
+                <button type="button" class="btn btn-secondary" onclick="location.href='{{ url('/grade/1/add') }}'">
                     成績登録
                 </button>
             </div>

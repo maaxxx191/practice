@@ -35,8 +35,8 @@ Route::get('/student/edit', 'StudentController@edit')->name('student.edit');
 // Route::get read(参照)
 // Route::post create(登録)
 
-Route::get('/grade/add', function() {
-  return view('student.add-grade');
-});
+Route::get('/grade/{id}/add', 'GradeController@showAddForm')->name('showAddForm');
+
+Route::post('/grade/{id}/add', 'GradeController@store')->name('student.add-grade');
 
 Route::get('/grade/edit', 'GradeController@edit')->name('student.edit-grades');
