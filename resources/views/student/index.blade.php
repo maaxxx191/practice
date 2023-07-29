@@ -44,7 +44,7 @@
                         <tr>
                             <th scope="row">{{ $student->grade }}</th>
                             <td>{{ $student->name }}</td>
-                            <td><button type="button" class="btn btn-secondary" onclick="location.href='{{ url('/student/detail') }}'">詳細表示</button></td>
+                            <td><button type="button" class="btn btn-secondary" onclick="location.href='{{ url('student/' .$student->id) }}'">詳細表示</button></td>
                         </tr>
                     @endforeach
                  </tbody>

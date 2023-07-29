@@ -177,7 +177,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-              <a href="{{ url('/student/detail') }}">戻る</a>
+              <a href="{{ url('student/' .$id) }}">戻る</a>
             </div>
         </div>
     </div>

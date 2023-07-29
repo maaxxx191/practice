@@ -29,7 +29,7 @@ Route::post('/student/register', 'StudentController@store')->name('student.regis
 
 Route::get('/student', 'StudentController@index')->name('student.index');
 
-Route::get('/student/detail', 'StudentController@show')->name('student.show');
+Route::get('/student/{id}', 'StudentController@show')->name('student.show');  //学生詳細
 
 Route::get('/student/edit', 'StudentController@edit')->name('student.edit');
 // Route::get read(参照)

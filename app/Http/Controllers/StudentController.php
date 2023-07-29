@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\SchoolGrade;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -27,27 +28,15 @@ class StudentController extends Controller
         return view('student.index', compact('students', 'name', 'grade'));
     }
 
-    public function show(Request $request) {
-        $student = [
-            "id" => 3,
-            "grade" => 2,
-            "name" => "岡田", 
-            "address" => "兵庫県西宮市甲子園80",
-        ];
-        $grade = [
-            "grade" => 1,
-            "term" => 1,
-            "japanese" => 2, 
-            "math" => 2,
-            "science" => 5,
-            "socialstudies" => 4,
-            "music" => 3,
-            "homeeconomics" => 4,
-            "english" => 2,
-            "art" => 5,
-            "health_and_physical_education" => 5,
-        ];
-        return view('student.detail', compact('student', 'grade'));
+    public function show($id) {
+
+        $student = Student::find($id);
+        $grades = SchoolGrade::where('student_id', $id) 
+            ->orderBy('grade')
+            ->orderBy('term')
+            ->get(); 
+        
+        return view('student.detail', compact('student', 'grades'));
     }
 
     public function edit(Request $request) {
