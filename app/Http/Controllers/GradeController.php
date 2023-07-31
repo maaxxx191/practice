@@ -11,21 +11,26 @@ class GradeController extends Controller
         return view('student.add-grade', compact('id'));  //成績登録画面にIDを渡す
     }
 
-    public function edit(Request $request) {
-        $array = [
-            "grade" => 2,
-            "term" => 1,
-            "japanese" => 2, 
-            "math" => 2,
-            "science" => 5,
-            "socialstudies" => 4,
-            "music" => 3,
-            "homeeconomics" => 4,
-            "english" => 2,
-            "art" => 5,
-            "health_and_physical_education" => 5,
-        ];
-        return view('student.edit-grades', compact('array'));
+    public function edit($id) {
+        $grade = SchoolGrade::find($id);
+        return view('student.edit-grades', compact('grade'));
+    }
+
+    public function update(Request $request, $id) {
+        $grade = SchoolGrade::find($id);
+        $grade->japanese = $request->japanese;
+        $grade->math = $request->math;
+        $grade->science = $request->science;
+        $grade->social_studies = $request->socialstudies;
+        $grade->music = $request->music;
+        $grade->home_economics = $request->homeeconomics;
+        $grade->english = $request->english;
+        $grade->art = $request->art;
+        $grade->health_and_physical_education = $request->health_and_physical_education;
+        $grade->update();
+
+        //ルートpostの時はredirect（ルートgetの時はview）
+        return redirect('grade/'.$id.'/edit')->with('flash_message','編集が完了しました');
     }
 
     public function store(Request $request, $id) {
@@ -45,16 +50,6 @@ class GradeController extends Controller
         $grade->save();
 
         return redirect('grade/'.$id.'/add')->with('flash_message','登録が完了しました');
-
-
-        // $student = new Student();
-        // $student->name = $request->name; 
-        // $student->address = $request->address; 
-        // $student->img_path = '';
-        // // // // $student->img_path = $request->photo;
-        // $student->save();
-
-        // return redirect('/student/register')->with('flash_message','登録が完了しました');
     }
     
 }

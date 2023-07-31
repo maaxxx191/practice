@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    //学生表示
     public function index(Request $request) {
 
         $name = $request->name; 
@@ -28,6 +29,7 @@ class StudentController extends Controller
         return view('student.index', compact('students', 'name', 'grade'));
     }
 
+    //学生詳細
     public function show($id) {
 
         $student = Student::find($id);
@@ -39,17 +41,15 @@ class StudentController extends Controller
         return view('student.detail', compact('student', 'grades'));
     }
 
-    public function edit(Request $request) {
-        $array = [
-            "id" => 87654321,
-            "grade" => 2,
-            "name" => "北條", 
-            "address" => "大阪府堺市南区26",
-            "comment" => "昨年より成績が下がりました",
-        ];
-        return view('student.edit', compact('array'));
+    //学生編集を表示
+    public function edit($id) {
+        
+        $student = Student::find($id);
+        
+        return view('student.edit', compact('student'));
     }
     
+    //学生編集処理
     public function store(Request $request) {
         $student = new Student();
         $student->name = $request->name; 

@@ -26,7 +26,7 @@
                 </tr>
             </table>
 
-            <button type="button" class="btn btn-outline-secondary mb-5" onclick="location.href='{{ url('/student/edit') }}'">
+            <button type="button" class="btn btn-outline-secondary mb-5" onclick="location.href='{{ url('student/'.$student->id.'/edit') }}'">
                 学生編集
             </button>
 
@@ -68,14 +68,14 @@
                 </table>
 
                 <div>
-                    <button type="button" class="btn btn-outline-secondary mb-5" onclick="location.href='{{ url('/grade/edit') }}'">
+                    <button type="button" class="btn btn-outline-secondary mb-5" onclick="location.href='{{ url('grade/'.$grade->id.'/edit') }}'">
                         成績編集
                     </button>
                 </div>
             @endforeach
 
             <div>
-                <button type="button" class="btn btn-secondary" onclick="location.href='{{ url('/grade/1/add') }}'">
+                <button type="button" class="btn btn-secondary" onclick="location.href='{{ url('grade/'.$student->id.'/add') }}'">
                     成績登録
                 </button>
             </div>
