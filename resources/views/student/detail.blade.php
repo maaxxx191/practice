@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <th scope="row" class="bg-info">顔写真</th>
-                    <td>画像</td>
+                    <td><img src="{{ asset($student->img_path) }}" width="100"></td>
                 </tr>
             </table>
 

@@ -45,20 +45,41 @@ class StudentController extends Controller
     public function edit($id) {
         
         $student = Student::find($id);
+        $student->img_path = 'storage/photo/'.$student->id.'.png';
         
         return view('student.edit', compact('student'));
     }
     
-    //学生編集処理
+    //学生登録
     public function store(Request $request) {
         $student = new Student();
         $student->name = $request->name; 
         $student->address = $request->address; 
         $student->img_path = '';
-        // // // $student->img_path = $request->photo;
         $student->save();
+
+        $request->file('photo')->storeAs('public/photo', $student->id.'.png');
+        $student->img_path = 'storage/photo/'.$student->id.'.png';
+        $student->update();
 
         return redirect('/student/register')->with('flash_message','登録が完了しました');
     }
     
+    public function update(Request $request, $id) {
+        $photo = $request->file('photo');
+
+        if( !is_null( $photo ) ) {
+            $photo->storeAs('public/photo', $id.'.png');
+        }
+
+        $student = Student::find($id);
+        $student->grade = $request->grade;
+        $student->name = $request->name;
+        $student->address = $request->address;
+        // $student->img_path = 'storage/photo/'.$student->id.'.png';
+        $student->comment = $request->comment;
+        $student->update();
+
+        return redirect('student/'.$id.'/edit')->with('flash_message','編集が完了しました');
+    }
 }
