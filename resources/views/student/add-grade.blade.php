@@ -20,7 +20,7 @@
                             <label for="grade" class="col-md-2 col-form-label">学年</label>
 
                             <div class="col-md-2">
-                                <select class="custom-select" id="grade" name="grade">
+                                <select class="custom-select" id="grade" name="grade" required>
                           
                                     @for ($i = 1; $i < 4; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
@@ -33,7 +33,7 @@
                             <label for="term" class="col-md-2 col-form-label">学期</label>
 
                             <div class="col-md-2">
-                                <select class="custom-select" id="term" name="term">
+                                <select class="custom-select" id="term" name="term" required>
                           
                                     @for ($i = 1; $i < 4; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
@@ -47,7 +47,7 @@
                                 <label for="japanese" class="col-md-4 col-form-label text-md-center">国語</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="japanese" name="japanese">
+                                    <select class="custom-select" id="japanese" name="japanese" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -60,7 +60,7 @@
                                 <label for="math" class="col-md-4 col-form-label text-md-center">数学</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="math" name="math">
+                                    <select class="custom-select" id="math" name="math" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -73,7 +73,7 @@
                                 <label for="science" class="col-md-4 col-form-label text-md-center">理科</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="science" name="science">
+                                    <select class="custom-select" id="science" name="science" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -89,7 +89,7 @@
                                 <label for="socialstudies" class="col-md-4 col-form-label text-md-center">社会</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="socialstudies" name="socialstudies">
+                                    <select class="custom-select" id="socialstudies" name="socialstudies" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -102,7 +102,7 @@
                                 <label for="music" class="col-md-4 col-form-label text-md-center">音楽</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="music" name="music">
+                                    <select class="custom-select" id="music" name="music" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -115,7 +115,7 @@
                                 <label for="homeeconomics" class="col-md-4 col-form-label text-md-center">家庭科</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="homeeconomics" name="homeeconomics">
+                                    <select class="custom-select" id="homeeconomics" name="homeeconomics" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -131,7 +131,7 @@
                                 <label for="english" class="col-md-4 col-form-label text-md-center">英語</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="english" name="english">
+                                    <select class="custom-select" id="english" name="english" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -144,7 +144,7 @@
                                 <label for="art" class="col-md-4 col-form-label text-md-center">美術</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="art" name="art">
+                                    <select class="custom-select" id="art" name="art" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -157,7 +157,7 @@
                                 <label for="health_and_physical_education" class="col-md-4 col-form-label col-form-label-sm text-md-center my-md-auto">保健体育</label>
 
                                 <div class="col-md-6">
-                                    <select class="custom-select" id="health_and_physical_education" name="health_and_physical_education">
+                                    <select class="custom-select" id="health_and_physical_education" name="health_and_physical_education" required>
                             
                                         @for ($i = 1; $i < 6; $i++)
                                             <option value="{{ $i }}">{{ $i }}</option>

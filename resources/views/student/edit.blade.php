@@ -26,7 +26,7 @@
                             <label for="grade" class="col-md-2 col-form-label">学年</label>
 
                             <div class="col-md-2">
-                                <select class="custom-select" id="grade" name="grade">
+                                <select class="custom-select" id="grade" name="grade" required>
                           
                                     @for ($i = 1; $i < 4; $i++)
                                         <option value="{{ $i }}" @if($student->grade == $i) selected @endif>{{ $i }}</option>
@@ -71,7 +71,7 @@
 
                             <div class="col-md-6">
                                 <img src="{{ asset($student->img_path) }}" width="80" class="mb-2">
-                                <input id="photo" type="file" class="form-control-file @error('photo') is-invalid @enderror" name="photo" >
+                                <input id="photo" type="file" class="form-control-file @error('photo') is-invalid @enderror" name="photo" required>
                                 
                                 @error('photo')
                                     <span class="invalid-feedback" role="alert">
