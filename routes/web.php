@@ -31,6 +31,8 @@ Route::get('/student', 'StudentController@index')->name('student.index');
 
 Route::get('/student/{id}', 'StudentController@show')->name('student.show');  //学生詳細
 
+Route::post('/student/{id}/destroy', 'StudentController@destroy')->name('student.destroy'); //学生削除
+
 Route::get('/student/{id}/edit', 'StudentController@edit')->name('student.edit'); 
 
 Route::post('/student/{id}/edit', 'StudentController@update')->name('student.edit'); 

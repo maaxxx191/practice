@@ -30,15 +30,20 @@ class StudentController extends Controller
     }
 
     //学生詳細
-    public function show($id) {
+    public function show(Request $request, $id) {
 
         $student = Student::find($id);
-        $grades = SchoolGrade::where('student_id', $id) 
-            ->orderBy('grade')
-            ->orderBy('term')
-            ->get(); 
+        $grade = $request->grade;
+        $term = $request->term;
+        $school_grade = null;
+        if (isset($grade) || isset($term)) {
+            $school_grade = Schoolgrade::where('student_id', $id)
+                ->where('grade', $grade)
+                ->where('term', $term)
+                ->first();
+        }
         
-        return view('student.detail', compact('student', 'grades'));
+        return view('student.detail', compact('student', 'school_grade', 'grade', 'term'));
     }
 
     //学生編集を表示
@@ -46,7 +51,7 @@ class StudentController extends Controller
         
         $student = Student::find($id);
         $student->img_path = 'storage/photo/'.$student->id.'.png';
-        
+
         return view('student.edit', compact('student'));
     }
     
@@ -81,5 +86,12 @@ class StudentController extends Controller
         $student->update();
 
         return redirect('student/'.$id.'/edit')->with('flash_message','編集が完了しました');
+    }
+
+    // 学生削除
+    public function destroy($id) {
+        Student::destroy($id);
+
+        return redirect('/student');
     }
 }

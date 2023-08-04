@@ -15,4 +15,12 @@ class Student extends Model
     public function schoolGrades() {
         return $this->hasMany(SchoolGrade::class);  //関係性
     }
+
+    protected static function boot(){
+        parent::boot();
+
+        self::deleting(function ($student) {
+            $student->schoolGrades()->delete();
+        });
+    }
 }
