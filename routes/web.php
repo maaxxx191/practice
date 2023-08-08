@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', function() { 
-  return view('welcome');
-}); 
-
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/student/register', function() {
   return view('student.register');
@@ -37,6 +33,8 @@ Route::get('/student/{id}/edit', 'StudentController@edit')->name('student.edit')
 
 Route::post('/student/{id}/edit', 'StudentController@update')->name('student.edit'); 
 
+Route::post('/grade-update', 'StudentController@gradeUpdate')->name('grade-update'); //学年更新
+
 // Route::get read(参照)
 // Route::post create(登録)
 
@@ -47,3 +45,5 @@ Route::post('/grade/{id}/add', 'GradeController@store')->name('student.add-grade
 Route::get('/grade/{id}/edit', 'GradeController@edit')->name('student.edit-grades');
 
 Route::post('/grade/{id}/edit', 'GradeController@update')->name('student.grade-update');
+
+Route::post('/grade/{id}/destroy', 'GradeController@destroy')->name('grade.destroy'); //成績削除

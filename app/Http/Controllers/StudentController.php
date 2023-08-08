@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Student;
 use App\SchoolGrade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,7 @@ class StudentController extends Controller
         $grade = $request->grade;
         if (isset($name) || isset($grade)) {
             if ($grade == '-1'){
-                $students = Student::where('name', 'like', '%'.$name.'%')->get();   //学生名検索
+                $students = Student::where('name', 'like', '%'.$name.'%')->get();   //学生名検索、whereは絞り込み
             } else {
                 $students = Student::where('name', 'like', '%'.$name.'%')
                     ->where('grade', $grade)
@@ -93,5 +94,17 @@ class StudentController extends Controller
         Student::destroy($id);
 
         return redirect('/student');
+    }
+
+    //学年更新
+    public function gradeUpdate() {
+        Student::where('grade', '<>', 3)->chunk(100, function ($students) {  //<>否定(__じゃない)
+            foreach ($students as $student){  //$studentに1つの学生の情報が入っている
+                $student->grade++;  //学年を1更新する
+                $student->save();
+            }
+        });
+
+        return redirect('/')->with('flash_message','更新が完了しました');
     }
 }

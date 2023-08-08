@@ -51,5 +51,12 @@ class GradeController extends Controller
 
         return redirect('grade/'.$id.'/add')->with('flash_message','登録が完了しました');
     }
+
+    //成績削除
+    public function destroy(Request $request, $id) {
+        SchoolGrade::destroy($id);
+
+        return redirect('student/'.$request->student_id);
+    }
     
 }

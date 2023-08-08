@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-              <a href="{{ url('/home') }}">戻る</a>
+              <a href="{{ url('/') }}">戻る</a>
             </div>
         </div>
     </div>

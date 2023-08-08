@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    @if(session('flash_message'))
+        <div class="alert alert-success w-20 col-md-8 mx-md-auto" role="alert">
+            {{ session('flash_message') }}
+        </div>
+    @endif
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <!-- <div class="card">
@@ -17,9 +23,21 @@
                     You are logged in!
                 </div>
             </div> -->
-            <a href="{{ url('/home') }}">学年更新</a>
-            <a href="{{ url('/student/register') }}">学生登録</a>
-            <a href="{{ url('/student') }}">学生表示</a>
+
+            <div class="form-group row mb-0 justify-content-center">
+                <form method="POST" action="{{ url('/grade-update') }}"> 
+                    @csrf
+                    <button type="submit" class="btn btn-success btn-lg">
+                        学年更新
+                    </button>
+                </form>
+                <button type="button" class="btn btn-success btn-lg mx-5" onclick="location.href='{{ url('student/register') }}'">
+                    学生登録
+                </button>
+                <button type="button" class="btn btn-success btn-lg" onclick="location.href='{{ url('/student') }}'">
+                    学生表示
+                </button>
+             </div>
         </div>
     </div>
 </div>

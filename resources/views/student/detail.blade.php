@@ -31,7 +31,7 @@
                 </button>
                 <form method="POST" action="{{ url('student/'. $student->id.'/destroy') }}" name="studentForm"> 
                     @csrf
-                    <button type="button" class="btn btn-secondary" onclick="dispConfirm();">
+                    <button type="button" class="btn btn-secondary" onclick="dispConfirm('student');">
                         学生削除
                     </button>
                 </form>
@@ -94,10 +94,18 @@
                         </tbody>
                     </table>
 
-                    <div>
-                        <button type="button" class="btn btn-outline-secondary mb-5" onclick="location.href='{{ url('grade/'.$school_grade->id.'/edit') }}'">
+                    <div class="d-flex mb-5">
+                        <button type="button" class="btn btn-outline-secondary mr-3" onclick="location.href='{{ url('grade/'.$school_grade->id.'/edit') }}'">
                             成績編集
                         </button>
+                        <form method="POST" action="{{ url('grade/'. $school_grade->id.'/destroy') }}" name="gradeForm"> 
+                            @csrf
+                            {{-- inputタグにhiddenをつけると、情報を隠せる --}}
+                            <input type="hidden" value="{{ $school_grade->student_id }}" name="student_id">
+                            <button type="button" class="btn btn-secondary" onclick="dispConfirm('grade');">
+                                成績削除
+                            </button>
+                        </form>
                     </div>
                 @endif
                 <div>
@@ -114,10 +122,14 @@
     </div>
 </div>
 <script>
-    function dispConfirm() {
+    function dispConfirm(name) {
         let result = confirm('削除しますか');
         if (result) {
-            document.studentForm.submit();
+            if (name == 'student') {
+                document.studentForm.submit();
+            } else if (name == 'grade') {
+                document.gradeForm.submit();
+            }
         } 
     }                  
 </script>
